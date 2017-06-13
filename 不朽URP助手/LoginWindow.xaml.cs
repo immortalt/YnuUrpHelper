@@ -98,17 +98,6 @@ namespace 不朽URP助手
                     this.loginData = resp.data as LoginData;
                     this.userData = JsonHelper.Deserialize<UserData>(loginData.userData);
                     LoginSuccess = true;
-                    //var names = await StringValues.getValidNames();
-                    //if (names.Contains(userData.Name))
-                    //{
-                    //    MessageBox.Show(userData.Name + ",欢迎你！", "欢迎");
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(userData.Name + ",请联系不朽购买软件使用权限" +
-                    //        Environment.NewLine + "QQ:623408596", "警告");
-                    //    Environment.Exit(0);
-                    //}
                     urpSettings.username = tbx_username.Text;
                     if (urpSettings.savepwd)
                     {
