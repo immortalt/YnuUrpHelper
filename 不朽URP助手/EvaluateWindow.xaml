@@ -1,0 +1,57 @@
+﻿<Window x:Class="不朽URP助手.EvaluateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:不朽URP助手"
+        mc:Ignorable="d"
+        Title="教学评估" Height="600" Width="800" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel>
+            <StackPanel x:Name="stack_head">
+                <TextBlock FontSize="30" Text="{Binding CourseName}" Margin="10"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="18" Margin="10">教学班代码：</TextBlock>
+                    <TextBlock FontSize="18" Margin="10" Text="{Binding TeachClassId}"/>
+                    <TextBlock FontSize="18" Margin="10">课程性质：</TextBlock>
+                    <TextBlock FontSize="18" Margin="10" Text="{Binding CourseNature}"/>
+                    <TextBlock FontSize="18" Margin="10">任课老师：</TextBlock>
+                    <TextBlock FontSize="18" Margin="10" Text="{Binding TeacherName}"/>
+                </StackPanel>
+            </StackPanel>
+            <ListView Name="lv_evaluate">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="指标代码" DisplayMemberBinding="{Binding Path=Code}" />
+                        <GridViewColumn Header="指标名称" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Header="指标权重" DisplayMemberBinding="{Binding Path=Weight}" />
+                        <GridViewColumn Header="评分">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox SelectedIndex="{Binding Result,Mode=TwoWay}">
+                                        <ComboBoxItem>优秀</ComboBoxItem>
+                                        <ComboBoxItem>良好</ComboBoxItem>
+                                        <ComboBoxItem>一般</ComboBoxItem>
+                                        <ComboBoxItem>较差</ComboBoxItem>
+                                    </ComboBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Border>
+                <TextBlock FontSize="18">在这里输入对教师的评价，同学，必须要填哦！</TextBlock>
+            </Border>
+            <Grid x:Name="grid_comment">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Text="{Binding Comment,Mode=TwoWay}"/>
+                <Button x:Name="btu_submit" Click="btu_submit_Click"
+                        Grid.Column="1" Width="80" FontSize="25">提交</Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
